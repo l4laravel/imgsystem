@@ -12,6 +12,7 @@
 */
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 Route::get('/', function () {
     return view('welcome');
@@ -19,8 +20,20 @@ Route::get('/', function () {
 
 Route::post('/store', function (Request $request){
 
+    if ($request->hasFile('image')){
      $request->file('image');
-    return $request->image->store('public');
+//    return $request->image->path();  // get path
+//    return $request->image->extension(); //  get extension
+
+//        first way store
+        //    return $request->image->store('public');   // store image
+
+//        second way store
+
+        return Storage::putFile('public', $request->file('image'));
+    }else{
+        return 'no file ';
+    }
 
 });
 
