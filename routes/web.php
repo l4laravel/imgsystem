@@ -39,8 +39,14 @@ Route::post('/store', function (Request $request){
 
 Route::get('/show', function (){
 
-   return Storage::files('public');
+  // return Storage::files('public');// show only this file image
+  // return Storage::allFiles('public'); // show all file with sub folder
 
+     Storage::makeDirectory('public/new');  // make directory
+
+    if (Storage::deleteDirectory('public/new'));  // remove directory;
+
+     return Storage::allFiles('public'); // show all file with sub folder
 });
 
 
