@@ -11,9 +11,19 @@
 |
 */
 
+use Illuminate\Http\Request;
+
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::post('/store', function (Request $request){
+
+     $request->file('image');
+    return $request->image->store('public');
+
+});
+
 
 Auth::routes();
 
