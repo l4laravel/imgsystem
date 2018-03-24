@@ -53,7 +53,8 @@ Route::get('/show', function (){
 //     return Storage::allFiles('public'); // show all file with sub folder
 
 
-
+    $url = Storage::url('rohan.jpg');
+    return "<img src='".$url."'/>";
 
 
 
