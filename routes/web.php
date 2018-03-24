@@ -37,6 +37,14 @@ Route::post('/store', function (Request $request){
 
 });
 
+Route::get('/show', function (){
+
+   return Storage::files('public');
+
+});
+
+
+
 
 Auth::routes();
 
